@@ -1,15 +1,16 @@
 header {
+    background-color: var(--primary-base);
+    color: var(--text-color);
     padding-block-start: 2rem;
     padding-inline-start: 2rem;
     padding-inline-end: 2rem;
     padding-block-end: 2rem;
-}
-
-header > h1 {
+  }
+  
+  header > h1 {
     margin-block-start: 0;
-    margin-block-end: 0;
     font-size: 3rem;
-}
+  }
 
 .formdiv {
     flex-wrap: wrap;
