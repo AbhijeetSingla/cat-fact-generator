@@ -1,0 +1,44 @@
+header {
+    padding-block-start: 2rem;
+    padding-inline-start: 2rem;
+    padding-inline-end: 2rem;
+    padding-block-end: 2rem;
+}
+
+header > h1 {
+    margin-block-start: 0;
+    font-size: 3rem;
+}
+
+.formdiv {
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.formdiv > * {
+    min-height: 100%;
+}
+
+.formdiv-inside-container {
+    --gap: 2rem;
+    --max-spc-width: 60vw;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: space-around;
+    align-items: stretch;
+    margin: 0;
+}
+
+.formdiv-inside-container label, span {
+    align-self: center;
+}
+
+.number-input {
+    text-align: center;
+    color: var(--blog-card-text-color);
+    background-color: var(--section-offwhite-color);
+    border: none;
+}
+
+#factoutput {
+    text-align: center;
+}
