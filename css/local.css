@@ -2,6 +2,10 @@
     transition: 150ms ease-out;
 }
 
+html, body {
+    height: 100%;
+}
+
 header {
     background-color: var(--primary-base);
     color: var(--text-color);
@@ -48,10 +52,12 @@ header {
 
 #factoutput {
     text-align: center;
+    transition: transform 150ms ease-in, max-width 750ms ease-in-out;
+
 }
 
 .extradiv {
-    transition: 150ms ease-in;
+    transition: transform 150ms ease-in, max-width 750ms ease-in-out;
 }
 
 .d-none {
