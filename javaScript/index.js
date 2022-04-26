@@ -85,8 +85,8 @@ function generateFact() {
 }
 
 /**
- * * var direction = (x > 100) ? 1 : -1; //!IMPORTANT!!!!!!! (ternary notation)
- * * provide fallback values using || (pipe operators)
+ * * var direction = (x > 100) ? 1 : -1; //! ternary notation
+ * * provide fallback values using || //! pipe operators
  * Array.from(document.getElementsByClassName(prevClassName)) //! dont use this, it changes live
  * Array.from(document.getElementsByClassName(className)) //! dont use this, it changes live
  */
