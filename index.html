@@ -10,7 +10,7 @@
     <link rel="stylesheet" id="mode-select" href="https://as1553-component-library.netlify.app">
     <link rel="stylesheet" href="/css/local.css">
 </head>
-<body>
+<body onload="generateFact()" >
     <button id="theme-toggle-button"></button>
     <script src="https://as1553-component-library.netlify.app/javaScript/darkmodetoggle.js"></script>
     <header class="header-base capitalize">
@@ -28,7 +28,7 @@
         </div>
         <div class="formdiv-inside-container grid container-center">
             <label for="numberoffacts">for</label>
-            <input class="number-input" type="number" name="numberoffacts" placeholder="Number of Facts" id="multiplefacts">
+            <input class="number-input" type="number" name="numberoffacts" min="2" placeholder="Number of Facts" id="multiplefacts">
             <span>facts</span>
         </div>
         <div class="flex formdiv-inside-container"><button class="primary-button" onclick="generateFact()">Another!</button></div>
