@@ -1,3 +1,7 @@
+:root {
+    transition: 150ms ease-out;
+}
+
 header {
     background-color: var(--primary-base);
     color: var(--text-color);
@@ -44,4 +48,19 @@ header {
 
 #factoutput {
     text-align: center;
+}
+
+.extradiv {
+    transition: 150ms ease-in;
+}
+
+.d-none {
+    transform: translateX(200%);
+    transition: 150ms ease-in-out;
+    display: none;
+}
+
+.d-out {
+    transform: translateX(200%);
+    transition: 150ms ease-out;
 }
