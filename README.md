@@ -1,10 +1,14 @@
 # About
  Gives a random cat fact using the API [catfact.ninja](https://catfact.ninja/).
 
-You can also limit the maximum length of the fact being generated.
+You can also limit the maximum length of the fact being generated and **choose the number of facts** to be generated.
 
 # Preview
-A live preview can be seen at 
+
+> [!IMPORTANT]
+> This branch has not been deployed, only the main branch has been deployed, this branch would be merged into the main branch after testing and ensuring stability.
+
+A live preview of the main branch can be seen at 
 
 [as1553-catfacts.netlify.app](https://as1553-catfacts.netlify.app)
 
