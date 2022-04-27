@@ -5,9 +5,6 @@ You can also limit the maximum length of the fact being generated and **choose t
 
 # Preview
 
-> [!IMPORTANT]
-> This branch has not been deployed, only the main branch has been deployed, this branch would be merged into the main branch after testing and ensuring stability.
-
 A live preview of the main branch can be seen at 
 
 [as1553-catfacts.netlify.app](https://as1553-catfacts.netlify.app)
