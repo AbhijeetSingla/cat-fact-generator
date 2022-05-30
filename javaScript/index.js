@@ -5,10 +5,6 @@ let factContainer = document.querySelector("#factcontainer");
 let initialCatApiUrl = `https://catfact.ninja/fact`;
 let catApiUrlComplete = "";
 
-function timeout (ms) {
-    return new Promise(res => setTimeout(res,ms));
-}
-
 function replaceAllElementsClassName(prevClassName, newClassName) {
     let elementArray = document.querySelectorAll(`.${prevClassName}`);
     if (elementArray) {
@@ -19,50 +15,18 @@ function replaceAllElementsClassName(prevClassName, newClassName) {
     }
 }
 
-// function removeAllElementsByClassName (className) {
-//     let elementArray = document.querySelectorAll(`.${className}`);
-//     if (elementArray) {
-//         elementArray.forEach((element) => element.remove());
-//     }
-// }
-
-// function removeOldDivSlideOut (oldClassName, newClassName) {
-//         replaceAllElementsClassName(oldClassName, newClassName);
-//         onanimationend = () => {
-//             removeAllElementsByClassName(newClassName);
-//         }       
-// }
-
-// function printToNewDiv (factObject) {
-//     let timeoutCounter = 0;
-//     let dataCount = 1;
-//     factOutput.classList.add("d-out");
-//     factObject.data.forEach((element) => {
-//         (async () => {
-//             const newElement = document.createElement("div");
-//             newElement.setAttribute("class", "section-offwhite d-in");
-//             newElement.setAttribute("data-count", dataCount);
-//             factContainer.append(newElement);
-//             await timeout(`${timeoutCounter}0`);
-//             factOutput.remove();
-//             newElement.classList.remove("d-out");
-//             newElement.classList.add("extradiv");
-//             newElement.innerText = element.fact;
-//         })();
-//         timeoutCounter += 9;
-//         dataCount++;
-//     })
-// }
-
 function printToNewDiv (factObject) {
     let timeoutCounter = 0;
     let dataCount = 0;
     factObject.data.forEach((element) => {
         const newElement = document.createElement("div");
-        newElement.setAttribute("class", "section-offwhite extradiv d-in");
+        newElement.setAttribute("class", "section-offwhite opacity-zero extradiv d-in");
         newElement.setAttribute("style", `--animation-order:${dataCount};`);
-        factContainer.append(newElement);
+        factContainer.insertBefore(newElement, document.querySelector(".extradiv.d-out"));
         newElement.innerText = element.fact;
+        newElement.addEventListener("animationstart", ()=> {
+            newElement.classList.remove("opacity-zero");
+        }, {once:true});
         timeoutCounter += 9;
         dataCount++;
     })
@@ -89,35 +53,37 @@ function generateFact() {
     .then(responseJson => {
         factContainer.classList.remove("d-none");
         if(responseJson.fact){
+            factOutput.classList.remove("d-out", "d-none");
+            replaceAllElementsClassName("d-in", "d-out");
+            dOutDiv = document.querySelectorAll(".extradiv.d-out");
+            dOutDiv.forEach((element) => element.addEventListener("animationend", () => {
+                element.remove();
+            }, {once: true}));
             factOutput.classList.add("animateIn");
             factOutput.innerText = responseJson.fact;
         } else {
             if(!generateFact.didRun) {
                 factOutput.classList.add("d-out");
-                factOutput.onanimationend = () => {
-                    factOutput.remove();
-                    factContainer.classList.remove("animateIn");
-                }
+                factOutput.addEventListener("animationend", () => {
+                    factOutput.classList.add("d-none");
+                }, {once: true});
                 printToNewDiv(responseJson);
                 generateFact.didRun = true;
-                factContainer.classList.add("animateIn");
             } else {
                 factOutput.classList.add("d-out");
-                factOutput.onanimationend = () => {
-                    factOutput.remove();
-                    factContainer.classList.remove("animateIn");
+                if(!factOutput.classList.contains("d-none")){
+                        factOutput.addEventListener("animationend", () => {
+                        factOutput.classList.add("d-none");
+                        factContainer.classList.remove("animateIn");
+                    }, {once: true});
                 }
                 replaceAllElementsClassName("d-in", "d-out");
-                dOutDiv = document.querySelectorAll(".d-out");
-                dOutDiv.forEach((element) => element.onanimationend = () => {
+                dOutDiv = document.querySelectorAll(".extradiv.d-out");
+                dOutDiv.forEach((element) => element.addEventListener("animationend", () => {
                     element.remove();
-                });
+                }, {once: true}));
                 printToNewDiv(responseJson);
-                factContainer.classList.add("animateIn");
-                // (async () => {
-                //     await removeOldDivSlideOut("d-in", "d-out", 1500);
-                //     printToNewDiv(responseJson); 
-                // })()
+
             }
         }
     }).catch(error => factOutput.innerText = `${error}`)
