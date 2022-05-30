@@ -67,7 +67,7 @@ header > h1 {
 .d-out {
     animation-name: slide-out;
     animation-delay: calc(var(--animation-order) * 150ms);
-    animation-duration: 9000ms;
+    animation-duration: 900ms;
     animation-timing-function: ease-in-out;
     animation-iteration-count: 1;
 }
@@ -75,7 +75,7 @@ header > h1 {
 .d-in {
     animation-name: slide-in;
     animation-delay: calc(var(--animation-order) * 150ms);
-    animation-duration: 9000ms;
+    animation-duration: 900ms;
     animation-timing-function: ease-in-out;
     animation-iteration-count: 1;
 }
