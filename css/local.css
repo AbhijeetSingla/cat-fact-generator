@@ -15,10 +15,10 @@ header {
     padding-block-end: 2rem;
   }
   
-  header > h1 {
+header > h1 {
     margin-block-start: 0;
     font-size: 3rem;
-  }
+}
 
 .formdiv {
     flex-wrap: wrap;
@@ -50,34 +50,24 @@ header {
     border: none;
 }
 
-#factcontainer {
-    transition: 1150ms ease-in-out;
-}
+#factcontainer {transition: 1000ms ease-in-out;}
 
-.animateIn {
-    animation: animate-in 400ms ease-in-out;
-}
+.animateIn {animation: animate-in 400ms ease-in-out;}
 
-.fitSize {
-    animation: fit-size 500ms ease-in-out;
-}
+.fitSize {animation: fit-size 9000ms ease-in-out;}
 
-#factoutput {
-    text-align: center;
-}
+#factoutput {text-align: center;}
 
-.extradiv {
-    transition: max-width 750ms ease-in-out;
-}
+.extradiv {transition: all 750ms ease-in-out;}
 
-.d-none {
-    display: none;
-}
+.d-none {display: none;}
+
+.opacity-zero {opacity: 0;}
 
 .d-out {
     animation-name: slide-out;
     animation-delay: calc(var(--animation-order) * 150ms);
-    animation-duration: 900ms;
+    animation-duration: 9000ms;
     animation-timing-function: ease-in-out;
     animation-iteration-count: 1;
 }
@@ -85,14 +75,14 @@ header {
 .d-in {
     animation-name: slide-in;
     animation-delay: calc(var(--animation-order) * 150ms);
-    animation-duration: 900ms;
+    animation-duration: 9000ms;
     animation-timing-function: ease-in-out;
     animation-iteration-count: 1;
 }
 
 @keyframes slide-in {
     0% {
-        transform: scale(0.8) translateX(-100%);
+        transform: scale(0.8) translateX(-200%);
     }
 
     70% {
@@ -114,7 +104,7 @@ header {
     }
 
     100% {
-        transform: scale(0.8) translateX(100%);
+        transform: scale(0.8) translateX(200%);
     }
 }
 
@@ -131,12 +121,12 @@ header {
 
 @keyframes fit-size {
     0% {
-        overflow: hidden;
+        background-color: red;
         height: initial;
     }
 
     100% {
-        overflow: auto;
+        background-color: blue;
         height: fit-content;
     }
 }
